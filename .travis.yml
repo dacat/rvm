@@ -25,8 +25,6 @@ before_script:
   - rvm alias delete default
   - hash -r
   - ./install
-  - git submodule init
-  - git submodule update
   - rvm reload
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm autolibs read-only; fi
 script:
@@ -59,14 +57,3 @@ matrix:
         - rake --version
         - ruby -S bundle --version
         - ruby -ropen-uri -e 'puts open("https://rubygems.org/") { |f| f.read(1024) }'
-notifications:
-  email:
-    recipients:
-      - mpapis@gmail.com
-    on_failure: change
-  slack:
-    rooms:
-      secure: KUEuifsnQ76ZZRj/5V2uFEtv0u3irvAdOSEHps/0MSLo2mkJAeja8L4salKKEIsvh3Ftl4t6Bs2z6sut2L5Bu0JlU1UBXtNe0QuYpBs5UL7kv7lxIbnGlQDvAmDjmItVMDg0cSSNfegl6t0xQknO4V7PUu7xNkfQkh+FklvFBBI=
-    on_success: change
-    on_failure: always
-    on_pull_requests: true
